@@ -4,16 +4,17 @@ import org.lwjgl.opengl.Display;
 import renderEngine.Loader;
 import renderEngine.RawModel;
 import renderEngine.Renderer;
-
+import shaders.StaticShader;
 import renderEngine.DisplayManager;
 
 public class MainGame {
 
 	public static void main(String[] args) {
-		DisplayManager.createDisplay();
 		
+		DisplayManager.createDisplay();
 		Loader loader = new Loader();
 		Renderer renderer = new Renderer();
+		StaticShader shader = new StaticShader();
 		
 		float[] vertices = {
 			  -0.5f,  0.5f, 0f,
@@ -32,10 +33,13 @@ public class MainGame {
 		while(!Display.isCloseRequested()) {
 			// Game loop + rendering
 			renderer.prepare();
+			shader.start();
 			renderer.render(model);
+			shader.stop();
 			DisplayManager.updateDisplay();
 		}
 		
+		shader.cleanUp();
 		loader.removeVOs();
 		DisplayManager.closeDisplay();
 		System.exit(0);
