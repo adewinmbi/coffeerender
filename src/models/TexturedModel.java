@@ -20,5 +20,4 @@ public class TexturedModel {
 		return texture;
 	}
 	
-	
 }
