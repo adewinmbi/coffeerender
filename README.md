@@ -1,2 +1,2 @@
-# voxelspace
-An implementation of the voxel space algorithm in Java
+# (As yet unnamed) Java Rendering Engine
+A simple rendering engine written in Java, using LWJGL and OpenGL.
