@@ -8,6 +8,7 @@ public class Camera {
 	private Vector3f position = new Vector3f(0, 0, 0);
 	private float pitch, yaw, roll;
 	private float cameraMoveSpeed = 0.02f;
+	private float cameraRotSpeed = 1f;
 	
 	public Camera() {}
 	
