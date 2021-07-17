@@ -44,6 +44,7 @@ public class Renderer {
 		glBindVertexArray(rawModel.getVaoID());
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
 		Matrix4f transformationMatrix = Mathf.createTransformationMatrix(entity.getPosition(), entity.getRotX(),
 				entity.getRotY(), entity.getRotZ(), entity.getScale());
 		
@@ -55,6 +56,7 @@ public class Renderer {
 		
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
+		glDisableVertexAttribArray(2);
 		glBindVertexArray(0);
 	}
 	
