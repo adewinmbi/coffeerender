@@ -13,6 +13,7 @@ import static org.lwjgl.opengl.GL13.*;
 import models.RawModel;
 import models.TexturedModel;
 import shaders.StaticShader;
+import textures.ModelTexture;
 import tools.Mathf;
 
 import static org.lwjgl.opengl.GL20.*;
@@ -49,6 +50,8 @@ public class Renderer {
 				entity.getRotY(), entity.getRotZ(), entity.getScale());
 		
 		shader.loadTransformationMatrix(transformationMatrix);
+		ModelTexture texture = texturedModel.getTexture();
+		shader.loadShineVars(texture.getShineDamper(), texture.getReflectivity());
 		
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texturedModel.getTexture().getID());

@@ -26,10 +26,14 @@ public class MainGame {
 		
 		RawModel model = OBJLoader.loadObjModel("dragon", loader);
 		// ModelTexture texture = new ModelTexture(loader.loadTexture("cloud"));
-		TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("maroon")));
+		TexturedModel texturedModel = new TexturedModel(model, new ModelTexture(loader.loadTexture("pink")));
+		ModelTexture texture = texturedModel.getTexture();
+		texture.setShineDamper(10f);
+		texture.setReflectivity(1f);
+		
 		
 		Entity newEntity = new Entity(texturedModel, new Vector3f(0, -5, -20),0,0,0,1);
-		Light light = new Light(new Vector3f(0, 20, -15), new Vector3f(20, 20, 20));
+		Light light = new Light(new Vector3f(0, 20, -15), new Vector3f(1, 1, 1));
 		
 		Camera camera = new Camera();
 		
