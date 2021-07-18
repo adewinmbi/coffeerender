@@ -27,6 +27,8 @@ public class Renderer {
 	private Matrix4f projectionMatrix;
 	
 	public Renderer(StaticShader shader) {
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
 		createProjectionMatrix(); // Only needs to be called once
 		shader.start();
 		shader.loadProjectionMatrix(projectionMatrix);
