@@ -14,7 +14,7 @@ import models.TexturedModel;
 import renderEngine.Loader;
 import renderEngine.MasterRenderer;
 import renderEngine.OBJLoader;
-import renderEngine.Renderer;
+import renderEngine.EntityRenderer;
 import shaders.StaticShader;
 import textures.ModelTexture;
 import renderEngine.DisplayManager;

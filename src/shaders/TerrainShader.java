@@ -6,10 +6,10 @@ import entities.Camera;
 import entities.Light;
 import tools.Mathf;
 
-public class StaticShader extends ShaderProgram{
-	
-	private static final String vertexFile = "src/shaders/vertex.glsl";
-	private static final String fragmentFile = "src/shaders/fragment.glsl";
+public class TerrainShader extends ShaderProgram {
+
+	private static final String vertexFile = "src/shaders/terrainVertex.glsl";
+	private static final String fragmentFile = "src/shaders/terrainFragment.glsl";
 	
 	private int location_transformationMatrix;
 	private int location_projectionMatrix;
@@ -19,7 +19,7 @@ public class StaticShader extends ShaderProgram{
 	private int location_shineDamper;
 	private int location_reflectivity;
 
-	public StaticShader() {
+	public TerrainShader() {
 		super(vertexFile, fragmentFile);
 	}
 	
@@ -63,5 +63,5 @@ public class StaticShader extends ShaderProgram{
 		super.loadVector(location_lightPosition, light.getPosition());
 		super.loadVector(location_lightColor, light.getColor());
 	}
-
+	
 }
