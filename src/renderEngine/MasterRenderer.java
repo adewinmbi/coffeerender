@@ -23,6 +23,8 @@ import entities.Entity;
 import entities.Light;
 import models.TexturedModel;
 import shaders.StaticShader;
+import shaders.TerrainShader;
+import terrain.Terrain;
 
 public class MasterRenderer {
 
@@ -35,13 +37,18 @@ public class MasterRenderer {
 	private StaticShader shader = new StaticShader();
 	private EntityRenderer renderer;
 	
+	private TerrainRenderer terrainRenderer;
+	private TerrainShader terrainShader = new TerrainShader();
+	
 	private Map<TexturedModel, List<Entity>> entities = new HashMap<TexturedModel, List<Entity>>();
+	private List<Terrain> terrains = new ArrayList<Terrain>();
 	
 	public MasterRenderer() {
 		glEnable(GL_CULL_FACE);
 		glCullFace(GL_BACK);
 		createProjectionMatrix();
 		renderer = new EntityRenderer(shader, projectionMatrix);
+		terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
 	}
 	
 	public void render(Light light, Camera camera) {
@@ -51,7 +58,18 @@ public class MasterRenderer {
 		shader.loadViewMatrix(camera);
 		renderer.render(entities);
 		shader.stop();
+		terrainShader.start();
+		terrainShader.loadLight(light);
+		terrainShader.loadViewMatrix(camera);
+		terrainRenderer.render(terrains);
+		terrainShader.stop();
+		terrains.clear();
+		
 		entities.clear();
+	}
+	
+	public void processTerrain(Terrain terrain) {
+		terrains.add(terrain);
 	}
 	
 	public void processEntity(Entity entity) {
@@ -89,5 +107,6 @@ public class MasterRenderer {
 	
 	public void cleanUp() {
 		shader.cleanUp();
+		terrainShader.cleanUp();
 	}
 }

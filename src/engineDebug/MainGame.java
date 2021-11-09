@@ -33,9 +33,9 @@ public class MainGame {
 		texture.setReflectivity(1f);
 		
 		List<Entity> dragons = new ArrayList<Entity>();
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 3; i++) {
 			Entity dragon = new Entity(texturedModel, new Vector3f(0, -5, -20),0,0,0,1);
-			dragon.increasePosition((float)(Math.random() * (30) + 1), (float)(Math.random() * (30) + 1), (float)(Math.random() * (30) + 1));
+			dragon.increasePosition((float)(i * 10 - 9), 0, 0);
 			dragons.add(dragon);
 		}
 		
@@ -45,7 +45,6 @@ public class MainGame {
 		
 		while(!Display.isCloseRequested()) {
 			// Game loop + rendering
-			// newEntity.increaseRotation(0f, 0.5f, 0f);
 			camera.move();
 
 			for (Entity dragon : dragons) {
